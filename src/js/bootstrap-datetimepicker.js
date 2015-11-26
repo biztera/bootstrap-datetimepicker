@@ -1481,7 +1481,7 @@
         };
 
         picker.defaultHour = function (defaultHour) {
-            date.add(defaultHour, 'hours');
+            date = date.add(defaultHour, 'hours');
             return picker;
         };
 
