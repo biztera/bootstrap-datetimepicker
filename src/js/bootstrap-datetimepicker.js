@@ -2330,6 +2330,10 @@
 
         picker.options(options);
 
+        if (options.defaultHour) {
+            date.add(options.defaultHour, 'hours');
+        }
+
         initFormatting();
 
         attachDatePickerElementEvents();
