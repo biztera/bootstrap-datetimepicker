@@ -1480,6 +1480,11 @@
             return picker;
         };
 
+        picker.defaultHour = function (defaultHour) {
+            date.add(defaultHour, 'hours');
+            return picker;
+        };
+
         picker.date = function (newDate) {
             ///<signature helpKeyword="$.fn.datetimepicker.date">
             ///<summary>Returns the component's model current date, a moment object or null if not set.</summary>
@@ -2329,10 +2334,6 @@
         $.extend(true, options, dataToOptions());
 
         picker.options(options);
-
-        if (options.defaultHour) {
-            date.add(options.defaultHour, 'hours');
-        }
 
         initFormatting();
 
