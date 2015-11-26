@@ -1481,7 +1481,7 @@
         };
 
         picker.defaultHour = function (defaultHour) {
-            date = date.add(defaultHour, 'hours');
+            options.defaultHour = defaultHour;
             return picker;
         };
 
@@ -2330,6 +2330,9 @@
         // Set defaults for date here now instead of in var declaration
         date = getMoment();
         viewDate = date.clone();
+        if (options.defaultHour) {
+            date = date.add(options.defaultHour, 'hours');
+        }
 
         $.extend(true, options, dataToOptions());
 
@@ -2383,6 +2386,7 @@
         collapse: true,
         locale: moment.locale(),
         defaultDate: false,
+        defaultHour: 0,
         disabledDates: false,
         enabledDates: false,
         icons: {
