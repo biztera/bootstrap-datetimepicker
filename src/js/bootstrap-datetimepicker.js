@@ -844,6 +844,7 @@
 
             setValue = function (targetMoment) {
                 var oldDate = unset ? null : date;
+                var format = options.valueFormat || actualFormat;
 
                 // case of calling setValue(null or false)
                 if (!targetMoment) {
@@ -868,8 +869,8 @@
                 if (isValid(targetMoment)) {
                     date = targetMoment;
                     viewDate = date.clone();
-                    input.val(date.format(actualFormat));
-                    element.data('date', date.format(actualFormat));
+                    input.val(date.format(format));
+                    element.data('date', date.format(format));
                     unset = false;
                     update();
                     notifyEvent({
@@ -879,7 +880,7 @@
                     });
                 } else {
                     if (!options.keepInvalid) {
-                        input.val(unset ? '' : date.format(actualFormat));
+                        input.val(unset ? '' : date.format(format));
                     }
                     notifyEvent({
                         type: 'dp.error',
@@ -1482,6 +1483,11 @@
 
         picker.defaultHour = function (defaultHour) {
             options.defaultHour = defaultHour;
+            return picker;
+        };
+
+        picker.valueFormat = function (valueFormat) {
+            options.valueFormat = valueFormat;
             return picker;
         };
 
@@ -2377,6 +2383,7 @@
     $.fn.datetimepicker.defaults = {
         timeZone: 'Etc/UTC',
         format: false,
+        valueFormat: false,
         dayViewHeaderFormat: 'MMMM YYYY',
         extraFormats: false,
         stepping: 1,
