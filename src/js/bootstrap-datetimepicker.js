@@ -843,8 +843,8 @@
             },
 
             setValue = function (targetMoment) {
-                var oldDate = unset ? null : date;
-                var format = options.valueFormat || actualFormat;
+                var oldDate = unset ? null : date,
+                    format = options.valueFormat || actualFormat;
 
                 // case of calling setValue(null or false)
                 if (!targetMoment) {
